@@ -6,7 +6,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface MovieAPI {
-    @GET("movie/popular?api_key=1f54bd990f1cdfb230adb312546d765d&language=pt-BR")
+    @GET("movie/top_rated?api_key=d37c9166850428d8322358f992a9e3b3&language=pt-BR&page=1")
     Call<List<Movie>> getMovies();
-    //String BASE_URL = "https://api.themoviedb.org/3/";
 }

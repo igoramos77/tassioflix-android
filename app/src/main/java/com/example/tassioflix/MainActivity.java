@@ -10,11 +10,17 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tassioflix.databinding.ActivityMainBinding;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -51,8 +57,11 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+        recyclerView = findViewById(R.id.recyclerView);
+        movieList = new ArrayList<>();
+
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.themoviedb.org/3/")
+                .baseUrl("https://api.themoviedb.org/3/") // URL base https://api.themoviedb.org/3/
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -63,20 +72,34 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<Movie>>() {
             @Override
             public void onResponse(Call<List<Movie>> call, Response<List<Movie>> response) {
-                List<Movie> movies = response.body();
-                for (Movie movie : movies) {
-                    String content = "";
 
-                    content += "Title: " + movie.getTitle();
-                    content += "Overview: " + movie.getOverview();
-                    content += "Release Date: " + movie.getRelease_date();
-                    content += "Vote Average: " + movie.getVote_average();
-                    content += "Poster Path: " + movie.getPoster_path();
-                    content += "ID: " + movie.getId();
+                assert response.body() != null;
+                try {
+                    JSONObject obj = new JSONObject(response.body().toString());
+                    JSONArray results = obj.getJSONArray("results");
 
-                    Log.v("Movie", content);
-                    System.out.println(content);
+                    for(int i = 0; i < results.length(); i++) {
+                        movieList.add(
+                                new Movie(results.getJSONObject(i).getInt("id"),
+                                        results.getJSONObject(i).getString("title"),
+                                        results.getJSONObject(i).getString("poster_path"),
+                                        results.getJSONObject(i).getString("overview"),
+                                        results.getJSONObject(i).getString("release_date"),
+                                        results.getJSONObject(i).getString("vote_average"))
+                        );
+                    }
+
+                    putDataIntoRecyclerView(movieList);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
+            }
+
+            private void putDataIntoRecyclerView(List<Movie> movieList) {
+                Adapter adapter = new Adapter(MainActivity.this, movieList);
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
             }
 
             @Override

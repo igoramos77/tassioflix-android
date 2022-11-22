@@ -1,14 +1,14 @@
 package com.example.tassioflix;
 
 public class Movie {
-    private String id;
+    private Number id;
     private String title;
     private String poster_path;
     private String overview;
     private String release_date;
     private String vote_average;
 
-    public Movie(String id,String title, String poster_path, String overview, String release_date, String vote_average) {
+    public Movie(Number id,String title, String poster_path, String overview, String release_date, String vote_average) {
         this.id = id;
         this.title = title;
         this.poster_path = poster_path;
@@ -17,11 +17,11 @@ public class Movie {
         this.vote_average = vote_average;
     }
 
-    public String getId() {
+    public Number getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Number id) {
         this.id = id;
     }
 

@@ -4,9 +4,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import org.w3c.dom.Text;
 
@@ -22,8 +25,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         this.moviesList = moviesList;
     }
 
-
-
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -35,26 +36,31 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.id.setText(moviesList.get(position).getId());
-        holder.title.setText(moviesList.get(position).getTitle());
-        holder.overview.setText(moviesList.get(position).getOverview());
-        holder.release_date.setText(moviesList.get(position).getRelease_date());
-        holder.vote_average.setText(moviesList.get(position).getVote_average());
+        //holder.id.setText(moviesList.get(position).getId().toString());
+        //holder.title.setText(moviesList.get(position).getTitle());
+        //holder.overview.setText(moviesList.get(position).getOverview());
+        //holder.release_date.setText(moviesList.get(position).getRelease_date());
+        //holder.vote_average.setText(moviesList.get(position).getVote_average());
+
+        // permite usar a biblioteca Glide para carregar a imagem de uma URL externa
+        Glide.with(mContext)
+                .load("https://image.tmdb.org/t/p/w400" + moviesList.get(position).getPoster_path())
+                .into(holder.poster_path);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return moviesList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView id;
-        TextView title;
-        TextView overview;
-        TextView release_date;
-        TextView vote_average;
-        TextView poster_path;
+        //TextView id;
+        //TextView title;
+        //TextView overview;
+        //TextView release_date;
+        //TextView vote_average;
+        ImageView poster_path;
 
         public MyViewHolder(View itemView) {
             super(itemView);
