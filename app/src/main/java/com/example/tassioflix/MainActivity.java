@@ -1,6 +1,7 @@
 package com.example.tassioflix;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     content += "Poster Path: " + movie.getPoster_path();
                     content += "ID: " + movie.getId();
 
+                    Log.v("Movie", content);
                     System.out.println(content);
                 }
             }
