@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">tassioflix</string>
+    <string name="title_home">Em alta</string>
+    <string name="title_dashboard">Populares</string>
+</resources>
