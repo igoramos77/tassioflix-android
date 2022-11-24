@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Tassioflix</string>
-    <string name="title_home">Em destaque</string>
+    <string name="title_home">Oscar</string>
     <string name="title_dashboard">Populares</string>
 </resources>
