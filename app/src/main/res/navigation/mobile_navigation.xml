@@ -7,15 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.tassioflix.ui.home.HomeFragment"
+        android:name="com.example.tassioflix.ui.topRated.TopRatedFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_oscar" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.tassioflix.ui.dashboard.DashboardFragment"
+        android:name="com.example.tassioflix.ui.oscar.OscarFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
-
-
+        tools:layout="@layout/fragment_top_rated" />
 </navigation>

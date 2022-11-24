@@ -1,67 +1,68 @@
 package com.example.tassioflix.model.entity;
 
 public class Movie {
-    private Integer id;
-    private String title;
-    private String overview;
-    private String release_date;
-    private String vote_average;
-    private String poster_path;
 
-    public Movie(Integer id, String title, String overview, String release_date, String vote_average, String poster_path) {
+    private int id;
+    private String name;
+    private String slogan;
+    private String image;
+    private String duration_formatted;
+    private String backdrop;
+
+    public Movie(int id, String name, String slogan, String image, String duration_formatted, String backdrop) {
         this.id = id;
-        this.title = title;
-        this.overview = overview;
-        this.release_date = release_date;
-        this.vote_average = vote_average;
-        this.poster_path = poster_path;
+        this.name = name;
+        this.slogan = slogan;
+        this.image = image;
+        this.backdrop = backdrop;
+        this.duration_formatted = duration_formatted;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getOverview() {
-        return overview;
+    public String getSlogan() {
+        return slogan;
     }
 
-    public void setOverview(String overview) {
-        this.overview = overview;
+    public void setSlogan(String slogan) {
+        this.slogan = slogan;
     }
 
-    public String getRelease_date() {
-        return release_date;
+    public String getImage() {
+        return image;
     }
 
-    public void setRelease_date(String release_date) {
-        this.release_date = release_date;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public String getVote_average() {
-        return vote_average;
+    public String getBackdrop() {
+        return backdrop;
     }
 
-    public void setVote_average(String vote_average) {
-        this.vote_average = vote_average;
+    public void setBackdrop(String backdrop) {
+        this.backdrop = backdrop;
     }
 
-    public String getPoster_path() {
-        return poster_path;
+    public String getDuration_formatted() {
+        return duration_formatted;
     }
 
-    public void setPoster_path(String poster_path) {
-        this.poster_path = poster_path;
+    public void setDuration_formatted(String duration_formatted) {
+        this.duration_formatted = duration_formatted;
     }
 }
